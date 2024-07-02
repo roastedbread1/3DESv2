@@ -3,4 +3,4 @@
 extern std::string pt;
 extern std::string round_keys[16];
 
-std::string DES();
+std::string DES(std::string mode, std::string pt);

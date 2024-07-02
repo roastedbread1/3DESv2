@@ -59,8 +59,8 @@ void generateKeys(std::string key) {
 		round_keys[i] = round_key;
 	}
 }
-std::string pt;
-std::string DES() {
+
+std::string DES(std::string mode, std::string pt) {
     int initialPermutation[64] = {
         58,50,42,34,26,18,10,2,
         60,52,44,36,28,20,12,4,
@@ -163,7 +163,13 @@ std::string DES() {
         for (int i = 0; i < 48; i++) {
             rightExpanded += right[expansionTable[i] - 1];
         };
-        std::string xored = xorStrings(round_keys[i], rightExpanded);
+        std::string xored;
+        if(mode=="E") {
+            xored = xorStrings(round_keys[i], rightExpanded);
+        } else if(mode =="D") {
+            xored = xorStrings(round_keys[15-i], rightExpanded);
+        }
+        
         std::string res = "";
 
         for (int i = 0; i < 8; i++) {
@@ -189,12 +195,12 @@ std::string DES() {
 		}
     }
     std::string combined = left + right;
-    std::string ciphertext = "";
+    std::string text = "";
 
     for (int i = 0; i < 64; i++) {
-        ciphertext += combined[inversePermutation[i] - 1];
+        text += combined[inversePermutation[i] - 1];
 
     }
 
-    return ciphertext;
+    return text;
 }
