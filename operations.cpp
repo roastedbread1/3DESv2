@@ -1,6 +1,7 @@
 #include<string>
 #include <cmath>
 #include <bitset>
+#include <stdexcept>
 //converts a decimal number to a binary string
 std::string convertDecimalToBinary(int decimal) {
 	std::string binary;
@@ -74,4 +75,19 @@ std::string asciiToBinary(const std::string& ascii) {
 		binary += bin.to_string();  
 	}
 	return binary;
+}
+
+//binary to ascii
+std::string binaryToAscii(const std::string& binary) {
+	if (binary.length() % 8 != 0) {
+		throw std::invalid_argument("Binary string length must be a multiple of 8");
+	}
+
+	std::string ascii = "";
+	for (size_t i = 0; i < binary.length(); i += 8) {
+		std::string byte = binary.substr(i, 8);
+		std::bitset<8> bin(byte);
+		ascii += static_cast<char>(bin.to_ulong());
+	}
+	return ascii;
 }

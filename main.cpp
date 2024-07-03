@@ -39,7 +39,10 @@ int main() {
 	std::cout << pt << std::endl;
 	std::string binary = asciiToBinary(pt);
 	std::cout << binary << std::endl;
-	if (binary == "011011100110100101100111011001110110010101110010") {
-		std::cout << "text converted successfully" << std::endl;
+	std::string converted = binaryToAscii(binary);
+	std::cout << converted << std::endl;
+	if (converted == pt) {
+		std::cout << "text converted" << std::endl;
+
 	}
 }
