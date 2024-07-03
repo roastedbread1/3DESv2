@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
-
+#include <vector>
 
 std::string convertDecimalToBinary(int decimal);
 int convertBinaryToDecimal(std::string binary);
 std::string shiftLeftOnce(std::string key_chunk);
 std::string shiftLeftTwice(std::string key_chunk);
 std::string xorStrings(std::string a, std::string b);
-void generateKeys(std::string key);
+std::vector<std::string> generateKeys(std::string key);
