@@ -1,5 +1,6 @@
 #include<string>
 #include <cmath>
+#include <bitset>
 //converts a decimal number to a binary string
 std::string convertDecimalToBinary(int decimal) {
 	std::string binary;
@@ -63,4 +64,14 @@ std::string xorStrings(std::string a, std::string b) {
 		}
 	}
 	return result;
+}
+
+//ascii to binary
+std::string asciiToBinary(const std::string& ascii) {
+	std::string binary = "";
+	for (char c : ascii) {
+		std::bitset<8> bin(c);  
+		binary += bin.to_string();  
+	}
+	return binary;
 }
