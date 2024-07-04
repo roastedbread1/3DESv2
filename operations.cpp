@@ -1,4 +1,5 @@
-#include<string>
+#include <string>
+#include <vector>
 #include <cmath>
 #include <bitset>
 #include <stdexcept>
@@ -66,7 +67,20 @@ std::string xorStrings(std::string a, std::string b) {
 	}
 	return result;
 }
-
+//split string to n-chars strings (length%n==0)
+std::vector<std::string> split(std::string s, int n) {
+	std::vector<std::string> ss;
+	int ind=0;
+	while(ind<s.length()) {
+		ss.push_back(s.substr(ind, n));
+		ind+=n;
+	}
+	return ss;
+}
+//access i-th substring
+std::string block(std::string s, int ind, int len) {
+	return s.substr(ind, len);
+}
 //ascii to binary
 std::string asciiToBinary(const std::string& ascii) {
 	std::string binary = "";
