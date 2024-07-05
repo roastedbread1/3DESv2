@@ -2,6 +2,7 @@
 #include <vector>
 #include <cmath>
 #include <bitset>
+#include <iostream>
 #include <stdexcept>
 //converts a decimal number to a binary string
 std::string convertDecimalToBinary(int decimal) {
@@ -104,4 +105,33 @@ std::string binaryToAscii(const std::string& binary) {
 		ascii += static_cast<char>(bin.to_ulong());
 	}
 	return ascii;
+}
+//pad string
+void pad(std::string &s) {
+	if(s.length()%8==0) {
+		return;
+	} else {
+		std::string p = "";
+		int len = (int)8*(s.length()/8+1)-(int)s.length();
+		for(int i=0; i<len; i++) {
+			p+="#";
+		}
+		s+=p;
+	}
+}
+//repeat string
+void repeat(std::string &s) {
+	if(s.length()>=24) {
+		s = s.substr(0, 24);
+	} else {
+		std::string p = s;
+		while(s.length()<24) {
+			s+=p;
+		}
+		s = s.substr(0, 24);
+	}
+}
+void input(std::string m, std::string &s) {
+	std::cout << m << std::endl;
+	std::getline(std::cin, s);
 }
