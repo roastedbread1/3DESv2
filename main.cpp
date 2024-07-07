@@ -43,6 +43,5 @@ int main() {
 	std::cout << converted << std::endl;
 	if (converted == pt) {
 		std::cout << "text converted" << std::endl;
-
 	}
 }
