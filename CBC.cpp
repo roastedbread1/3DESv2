@@ -1,5 +1,6 @@
 #include <string>
 #include "DES.h"
+#include "TDES.h"
 #include "operations.h"
 #include <vector>
 #include <random>

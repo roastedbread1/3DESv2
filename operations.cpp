@@ -165,7 +165,7 @@ CypherSource ParseSource(const std::string& filepath) {
 				type = sourceType::PLAINTEXT;
 			} else if (line.find("key") != std::string::npos) {
 				type = sourceType::KEY;
-		}
+			}
 		}
 		else {
 			if (type != sourceType::NONE) {

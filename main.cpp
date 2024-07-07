@@ -1,10 +1,10 @@
-#include <operations.h>
+#include "operations.h"
 #include "DES.h"
 #include <string>
 #include <vector>
 #include <iostream>
-#include <CBC.h>
-#include <TDES.h>
+#include "CBC.h"
+#include "TDES.h"
 
 int main() {
 	// std::string key1, key2, key3;
