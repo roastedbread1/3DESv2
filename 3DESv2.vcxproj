@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="C:\Users\Azmi\Downloads\CBC.cpp" />
     <ClCompile Include="C:\Users\Azmi\Downloads\TDES.cpp" />
     <ClCompile Include="DES.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -138,8 +139,13 @@
     <ClCompile Include="operations.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CBC.h" />
     <ClInclude Include="DES.h" />
     <ClInclude Include="operations.h" />
+    <ClInclude Include="TDES.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cypher.source" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

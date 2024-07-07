@@ -27,6 +27,9 @@
     <ClCompile Include="C:\Users\Azmi\Downloads\TDES.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Azmi\Downloads\CBC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="operations.h">
@@ -35,5 +38,16 @@
     <ClInclude Include="DES.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CBC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TDES.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cypher.source">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

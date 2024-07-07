@@ -1,7 +1,13 @@
-#include<string>
+#include <string>
+#include <vector>
 #include <cmath>
 #include <bitset>
+#include <iostream>
 #include <stdexcept>
+#include <fstream>
+#include <sstream>
+#include "operations.h"
+
 //converts a decimal number to a binary string
 std::string convertDecimalToBinary(int decimal) {
 	std::string binary;
@@ -66,7 +72,20 @@ std::string xorStrings(std::string a, std::string b) {
 	}
 	return result;
 }
-
+//split string to n-chars strings (length%n==0)
+std::vector<std::string> split(std::string s, int n) {
+	std::vector<std::string> ss;
+	int ind=0;
+	while(ind<s.length()) {
+		ss.push_back(s.substr(ind, n));
+		ind+=n;
+	}
+	return ss;
+}
+//access i-th substring
+std::string block(std::string s, int ind, int len) {
+	return s.substr(ind, len);
+}
 //ascii to binary
 std::string asciiToBinary(const std::string& ascii) {
 	std::string binary = "";
@@ -90,4 +109,69 @@ std::string binaryToAscii(const std::string& binary) {
 		ascii += static_cast<char>(bin.to_ulong());
 	}
 	return ascii;
+}
+//pad string
+void pad(std::string &s) {
+	if(s.length()%8==0) {
+		return;
+	} else {
+		std::string p = "";
+		int len = (int)8*(s.length()/8+1)-(int)s.length();
+		for(int i=0; i<len; i++) {
+			p+="#";
+		}
+		s+=p;
+	}
+}
+//repeat string
+void repeat(std::string &s) {
+	if(s.length()>=24) {
+		s = s.substr(0, 24);
+	} else {
+		std::string p = s;
+		while(s.length()<24) {
+			s+=p;
+		}
+		s = s.substr(0, 24);
+	}
+}
+void input(std::string m, std::string &s) {
+	std::cout << m << std::endl;
+	std::getline(std::cin, s);
+}
+
+
+
+CypherSource ParseSource(const std::string& filepath) {
+	std::ifstream stream(filepath);
+
+	enum class sourceType
+	{
+		NONE = -1,
+		PLAINTEXT = 0,
+		KEY = 1
+	};
+
+	std::string line;
+
+	std::stringstream cs[2];
+	sourceType type = sourceType::NONE;
+
+	while(getline(stream, line)) 
+
+	{
+		if (line.find("#source") != std::string::npos) {
+			if (line.find("plaintext") != std::string::npos) {
+				type = sourceType::PLAINTEXT;
+			} else if (line.find("key") != std::string::npos) {
+				type = sourceType::KEY;
+		}
+		}
+		else {
+			if (type != sourceType::NONE) {
+				cs[(int)type] << line;
+			}
+		}
+	}
+	return {cs[0].str(), cs[1].str()};
 }
