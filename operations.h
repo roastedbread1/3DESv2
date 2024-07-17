@@ -18,6 +18,7 @@ std::string block(std::string s, int ind, int len);
 std::vector<std::string> generateKeys(std::string key);
 std::string asciiToBinary(const std::string& ascii);
 std::string binaryToAscii(const std::string& binary);
+std::string binaryToHex(const std::string& binary);
 void pad(std::string &s);
 void repeat(std::string &s);
 void input(std::string m, std::string &s);

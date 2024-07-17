@@ -10,11 +10,10 @@
 std::vector<uint8_t> generateRandomIV(size_t ivSize) {
     std::random_device rd;  // Seed for the random number engine
     std::mt19937 gen(rd()); // Mersenne Twister RNG
-    std::uniform_int_distribution<uint8_t> dis(0, 255); // Distribution for 8-bit values
-
+    std::uniform_int_distribution<unsigned int> dis(0, 255); // Use unsigned int instead
     std::vector<uint8_t> iv(ivSize);
     for (size_t i = 0; i < ivSize; ++i) {
-        iv[i] = dis(gen);
+        iv[i] = static_cast<uint8_t>(dis(gen)); // Cast the result to uint8_t
     }
     return iv;
 }
@@ -29,7 +28,7 @@ std::string bytesToBinaryString(const std::vector<uint8_t>& bytes) {
     return binaryString;
 }
 
-size_t ivSize = 16; // For AES, the IV size is typically 16 bytes (128 bits)
+size_t ivSize = 8;
 std::vector<uint8_t> iv = generateRandomIV(ivSize);
 std::string IV = bytesToBinaryString(iv);
 // std::cout << "Generated IV: " << IV << std::endl;

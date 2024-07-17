@@ -110,6 +110,21 @@ std::string binaryToAscii(const std::string& binary) {
 	}
 	return ascii;
 }
+// binary to hex
+std::string binaryToHex(const std::string& binary) {
+	if (binary.length() % 4 != 0) {
+		throw std::invalid_argument("Binary string length must be a multiple of 4");
+	}
+
+	std::string hex = "";
+	for (size_t i = 0; i < binary.length(); i += 4) {
+		std::string nibble = binary.substr(i, 4);
+		std::bitset<4> bin(nibble);
+		hex += "0123456789ABCDEF"[bin.to_ulong()];
+	}
+	return hex;
+}
+
 //pad string
 void pad(std::string &s) {
 	if(s.length()%8==0) {
