@@ -1,2 +1,2 @@
 # 3DESv2
-# The codes are inside the .cpp files and .h files
+ build using cl of g++, must config your own shell.bat if you want to use cl
